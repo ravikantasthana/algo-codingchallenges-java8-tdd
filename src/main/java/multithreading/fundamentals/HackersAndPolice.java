@@ -21,7 +21,7 @@ public class HackersAndPolice {
     }
 
     private static class Vault {
-        private int pin;
+        private final int pin;
 
         public Vault(int pin) {
             this.pin = pin;
@@ -61,7 +61,7 @@ public class HackersAndPolice {
 
         @Override
         public void run() {
-            for (int guess = 0; guess < MAX_PIN; guess++){
+            for (int guess = 0; guess <= MAX_PIN; guess++){
                 if(vault.isCorrectPin(guess)){
                     System.out.println(this.getName() + " guessed the pin " + guess);
                     System.exit(0);
