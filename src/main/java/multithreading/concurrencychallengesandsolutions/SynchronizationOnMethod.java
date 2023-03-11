@@ -1,6 +1,6 @@
-package multithreading.datasharing;
+package multithreading.concurrencychallengesandsolutions;
 
-public class NonAtomicOperation {
+public class SynchronizationOnMethod {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -10,7 +10,7 @@ public class NonAtomicOperation {
 
         incrementingThread.start();
         decrementingThread.start();
-        
+
         incrementingThread.join();
         decrementingThread.join();
 
@@ -52,16 +52,17 @@ public class NonAtomicOperation {
     private static class InventoryCounter {
 
         private int items;
-        public void increment(){
+        public synchronized void increment(){
             items++;
         }
 
-        public void decrement(){
+        public synchronized void decrement(){
             items--;
         }
 
-        public int getItems() {
+        public synchronized int getItems() {
             return items;
         }
     }
+
 }
